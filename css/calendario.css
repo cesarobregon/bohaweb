@@ -1,0 +1,260 @@
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(170, 163, 67, 0.534);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    display: flexbox;
+    background-color: #45462cf8; ;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 50%;
+    position: relative;
+    text-align: center;
+}
+
+.botones-modal {
+    
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.botones-modal button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.confirmar {
+    background-color: green;
+    color: white;
+}
+
+.cancelar {
+    background-color: red;
+    color: white;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.lista-reservas {
+    max-width: 500px;
+    width: 700px;
+    margin: 15 auto;
+    padding: 25px;
+    background-color: #000000;
+    border-radius: 8px;
+}
+
+.reserva-item {
+    position: relative; 
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #45462cf8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+.reserva-item p {
+    margin: 0;
+}
+.botones {
+    display:block;
+    gap: 10px;
+}
+.confirmar, .cancelar {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+}
+
+#modalReserva, #modalConfirmacion {
+    display: none;
+}
+
+input[type="submit"], button {
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #b38e30;
+}
+
+.input-ancho{
+    width: 100%; 
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para el calendario */
+#calendar {
+    width: 50%;
+    max-width: 100%;  /* Asegura que use todo el ancho disponible */
+    height: auto;   
+    margin: 0 auto;   /* Centra el calendario */
+    overflow: hidden;
+}
+/* Asegura que la cabecera del calendario (donde están los días de la semana) tenga fondo y texto visibles */
+.fc-header-toolbar {
+   
+    color: #beb200;  /* Texto */
+}
+
+/* Cambia el color de los días de la semana (Domingo, Lunes, etc.) */
+.fc-col-header-cell {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #45462cf8;  /* Fondo */
+    color: #b4a800 !important;  /*  texto*/
+    font-weight: bold;  /* Opcional, hace que el texto sea más grueso */
+}
+
+/* Cambia el color de los números de los días (los días del mes) */
+.fc-daygrid-day-number {
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff !important;  /* Asegura que el color del número de los días sea negro */
+    font-size: 20px;  /* Ajusta el tamaño de la fuente de los números si es necesario */
+}
+
+/* Ajusta el fondo de los eventos */
+.fc-event {
+    background-color: #333333;  /* Fondo oscuro para los eventos */
+    color: #000000 !important;  /* Texto blanco dentro de los eventos */
+}
+
+/* Asegura que el fondo de cada celda del calendario tenga un color visible */
+.fc-daygrid-day {
+    background-color: #45462cf8;  /* Fondo blanco para los días */
+    border: 1px solid #45462cf8;  /* Opcional: bordes grises claros entre los días */
+}
+/* Asegúrate de que el número de reservas se vea centrado */
+.fc-daygrid-event {
+    display: flex;
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+    font-weight: bold;
+    font-size: 19px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center; /* Centra el texto dentro de la celda */
+}
+
+.fc-daygrid-day-number {
+    color: white !important; /* Asegura que el texto sea visible sobre el fondo dorado */
+}
+
+/* Estilo para el evento */
+.fc-event {
+    background-color: gold !important; /* Fondo dorado */
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px;
+}
+.archivar-icon {
+    position: absolute; /* Posiciona el icono absolutamente */
+    top: 10px; /* Ajusta la distancia desde la parte superior */
+    right: 10px; /* Ajusta la distancia desde la derecha */
+    color: #f0ad4e; /* Color del icono */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    font-size: 1.2em; /* Tamaño del icono */
+}
+.archivar-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.icono-archivar {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.archivar-btn:hover .icono-archivar {
+    filter: brightness(1.2); /* Brillo en el ícono al pasar el mouse */
+}
+/* Aplica el estilo a los títulos de los eventos */
+/* Estilos para la estructura vertical */
+.filtros-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre los filtros */
+    margin-bottom: 20px; /* Espacio con el listado de reservas */
+}
+
+.filtro label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filtro select, 
+.filtro input[type="date"] {
+    width: 30%;
+    padding: 5px;
+    font-size: 1em;
+}
+
+.btn-filtrar {
+    width: 30%;
+    padding: 10px;
+    font-size: 1em;
+    background-color: #4CAF50; /* Color del botón */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-filtrar:hover {
+    background-color: #45a049;
+}
+
+/* Opcional: Estilos para el contenido del modal */
+.modal-content {
+    padding: 20px;
+
+}
+.mensaje-error {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #fdd;
+    border: 1px solid red;
+    border-radius: 4px;
+}

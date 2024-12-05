@@ -1,0 +1,175 @@
+
+/* Estilos generales */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Fondo negro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor del formulario */
+.recover-container {
+    text-align: center;
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+/* Títulos */
+h2 {
+    color: #FFD700; /* Amarillo */
+    margin-bottom: 30px;
+}
+
+/* Input de texto */
+input[type="email"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* Botón de envío */
+input[type="submit"] {
+    background-color: #FFD700; /* Color amarillo */
+    color: black;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Enlace de regresar */
+a {
+    color: #aaa;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+}
+
+/* Botón de cerrar */
+.close-btn {
+    background-color: #FFD700;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+/* Estilos generales */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Fondo negro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor del formulario */
+.login-container {
+    text-align: center;
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+  /* Imagen superior (más ancha y menos alta) */
+.login-container img {
+    width: 250px; /* Ancho deseado */
+    height: auto; /* Mantiene la relación de aspecto */
+    margin-bottom: 20px;
+}
+/* Títulos */
+h2 {
+    color: #FFD700; /* Amarillo similar al de tu diseño */
+    margin-bottom: 30px;
+}
+
+/* Input de texto */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* Botón de envío */
+input[type="submit"] {
+    background-color: #FFD700; /* Color amarillo */
+    color: black;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Enlace de olvidar contraseña */
+a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo del enlace de registrar */
+.register-link {
+    margin-top: 20px;
+    display: block;
+    color: #FFD700;
+}

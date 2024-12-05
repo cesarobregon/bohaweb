@@ -1,0 +1,165 @@
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #423d02;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+input[type="submit"], button {
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #b38e30;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 40px;
+    left: 0;
+    top: 0;
+    width: 140%;
+    height: 140%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro y semi-transparente */
+}
+
+.modal-content {
+    background-color: rgba(50, 50, 50, 0.9); /* Fondo gris oscuro con algo de transparencia */
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #b38e30;
+}
+
+/* Modal para eliminación */
+
+
+
+/* Estilo para el contenedor detrás de la tabla */
+.contenedor {
+    background-color: black; /* Fondo negro/gris oscuro para el contenedor */
+    padding: 20px;
+}
+
+/* Estilos para la tabla */
+.tabla-inicio {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #e0e0e0; /* Fondo gris intermedio para la tabla */
+    color: black; /* Texto negro para una mejor legibilidad */
+}
+
+/* Estilos para las celdas de la tabla */
+.tabla-inicio th, .tabla-inicio td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Fondo gris oscuro para el encabezado de la tabla */
+.tabla-inicio th {
+    background-color: #2c2c2c; /* Gris oscuro para el encabezado */
+    color: white; /* Texto blanco en el encabezado */
+}
+
+/* Fondo gris más oscuro para las filas pares */
+.tabla-inicio tr:nth-child(even) {
+    background-color: #b0b0b0; /* Gris más oscuro para las filas pares */
+}
+
+/* Fondo gris medio al pasar el mouse sobre las filas */
+.tabla-inicio tr:hover {
+    background-color: #999999; /* Gris más oscuro para el hover */
+}
+
+ /* Estilo del modal */
+.modal {
+        display: none; /* Ocultar el modal por defecto */
+        position: fixed; /* Fijar la posición del modal */
+        top: 0;
+        left: 0;
+        width: 110%; /* Ancho completo */
+        height: 110%; /* Alto completo */
+        background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro y transparente */
+        z-index: 1; /* Asegurarse de que el modal esté por encima de otros elementos */
+        overflow: auto; /* Permitir desplazamiento si el contenido del modal es muy grande */
+    }
+
+    /* Estilo del contenido del modal */
+    .modal-content-eliminar {
+        background-color: #333; /* Fondo gris oscuro para el contenido del modal */
+        color: white; /* Color del texto blanco */
+        margin: 25% auto; /* Centrado en el medio de la pantalla */
+        padding: 20px;
+        border-radius: 8px;
+        width: 40;/* Ancho del modal, puedes ajustarlo según prefieras */
+        text-align: center; /* Centrar el contenido */
+    }
+
+    /* Estilo del botón de cerrar */
+    .close {
+        color: #aaa; /* Color gris para el botón de cerrar */
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black; /* Cambia el color del botón de cerrar al pasar el mouse */
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+/* Estilo para el contenedor del botón (colocarlo arriba de la tabla y alineado a la derecha) */
+.boton-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea el botón a la derecha */
+    margin-bottom: 20px; /* Espacio entre el botón y la tabla */
+    
+}
+.boton-container .btn {
+    width: 150px;
+    height: 40px;
+    background-color:  #d69e2e; /* Amarillo más oscuro */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
