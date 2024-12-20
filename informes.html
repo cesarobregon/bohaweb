@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/logog.jpg" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Informe de Ventas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+       /* Estilos CSS */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #423d02;
+            margin: 0;
+            padding: 0;
+        }
+        input[type="submit"], button {
+            background-color: #d4af37;
+            color: white;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover, button:hover {
+            background-color: #b38e30;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .form-grafico-contenedor {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        form {
+            width: 45%;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+        label, select, input[type="datetime-local"] {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+        .grafico-contenedor {
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            width: 70%;
+            margin-left: 20px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 400px !important;
+        }
+        #descargarPdf-button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #descargarPdf-button:hover {
+            background-color: #45a049;
+        }
+
+         /* Estilo para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-content button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-content button:hover {
+            background-color: #0056b3;
+        }
+/* Botón de Generar Informe */
+button[type="submit"] {
+    color: black; /* Letras negras */
+    border: 1px solid black; /* Borde negro */
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #b38e30; /* Color cuando se pasa el mouse (ya definido antes) */
+}
+
+/* Botón de Generar PDF */
+#descargarPdf-button {
+    padding: 8px 16px;
+    background-color: #4CAF50; /* Verde */
+    color: black; /* Letras negras */
+    border: 1px solid black; /* Borde negro */
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#descargarPdf-button:hover {
+    background-color: #45a049; /* Un tono más oscuro cuando se pasa el mouse */
+}
+
+
+       
+        
+label {
+    font-weight: bold; /* Hace las etiquetas en negrita */
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+
+
+/* Estilo para el selector de informes (celeste más claro y con transparencia) */
+#tipo_informe {
+    background-color: rgba(135, 206, 235, 0.5); /* Celeste suave y con transparencia */
+    color: black; /* Texto negro */
+    border: 1px solid #423d02; /* Borde más delgado y oscuro */
+    padding: 8px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 4px; /* Bordes redondeados */
+    width: 100%; /* Ancho completo */
+    box-sizing: border-box; /* Ajustar ancho con padding */
+    outline: none; /* Sin contorno azul al enfocar */
+    appearance: none; /* Elimina flechas nativas en el selector */
+}
+
+/* Hover y foco para el selector de informes */
+#tipo_informe:hover, #tipo_informe:focus {
+    background-color: rgba(135, 206, 235, 0.7); /* Celeste con más opacidad al pasar el mouse */
+    color: black; /* Texto negro */
+    border-color: #302601; /* Borde más oscuro */
+}
+/* Estilo para el selector de fechas (celeste suave y con transparencia) */
+#fecha_inicio, #fecha_fin {
+    background-color: rgba(135, 206, 235, 0.5); /* Celeste suave y con transparencia */
+    color: black; /* Texto negro */
+    border: 1px solid #423d02; /* Borde más delgado y oscuro */
+    padding: 8px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 4px; /* Bordes redondeados */
+    width: 100%; /* Ancho completo */
+    box-sizing: border-box; /* Ajustar ancho con padding */
+    outline: none; /* Sin contorno azul al enfocar */
+}
+
+/* Hover y foco para el selector de fechas */
+#fecha_inicio:hover, #fecha_inicio:focus, #fecha_fin:hover, #fecha_fin:focus {
+    background-color: rgba(135, 206, 235, 0.7); /* Celeste con más opacidad al pasar el mouse */
+    color: black; /* Texto negro */
+    border-color: #302601; /* Borde más oscuro */
+}
+
+    </style>
+</head>
+
+<body>
+    <header id="banner-container">
+        <img src="Images/bannner.png" alt="Banner de Boha Restaurante" id="banner">
+        <h1>INFORMES</h1>
+        <nav>
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="pedidos.php">Ver Pedidos</a></li>
+                <li><a href="vista_reserva.php">Ver Reservas</a></li>
+                <li><a href="administrarMenu.php">Administrar productos</a></li>
+                <li><a href="informes.html">Generar Informes</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <h2 style="text-align: center;">Informes</h2>
+
+    <div class="container">
+        <div class="form-grafico-contenedor">
+            <form id="miFormulario"method="POST" action="generar_pdf.php">
+                <label for="tipo_informe">Seleccione Informe:</label>
+                <select id="tipo_informe" name="tipo_informe">
+                    <option value="metodo_de_pago">Metodos de pagos </option>
+                    <option value="platos_vendidos">Platos más vendidos</option>
+                    <option value="clientes_frecuentes">Clientes más frecuentes</option>
+                </select>
+
+                <label for="fecha_inicio">Fecha Inicio:</label>
+                <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" required>
+
+                <label for="fecha_fin">Fecha Fin:</label>
+                <input type="datetime-local" id="fecha_fin" name="fecha_fin" required>
+
+                <button type="submit">Generar Informe</button>
+                <button id="descargarPdf-button" class="btn btn-secondary">
+                    <i class="fas fa-file-pdf"></i> Generar PDF
+                </button>
+            </form>
+
+            <div class="grafico-contenedor">
+                <canvas id="ventasChart" width="600" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-no-datos">
+        <div class="modal-content">
+            <p>No se registran pedidos en el rango de fechas seleccionado. Por favor, pruebe con otro intervalo de fechas.</p>
+            <button id="btn-cerrar-modal">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Configuración inicial del gráfico
+        const ctx = document.getElementById('ventasChart').getContext('2d');
+        const ventasChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Ventas',
+                    data: [],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    
+        // Evento para el formulario principal
+        document.getElementById('miFormulario').addEventListener('submit', function (e) {
+            e.preventDefault();
+    
+            fetch('generar_informe.php', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Datos recibidos:", data); // Verifica la respuesta en la consola
+    
+                if (data.error) {
+                    alert("Error en la consulta: " + data.error);
+                } else if (data.labels.length === 0 && data.data.length === 0) {
+                    // Mostrar el modal si no hay datos
+                    mostrarModal();
+                } else {
+                    // Actualizar el gráfico con los datos recibidos
+                    ventasChart.data.labels = data.labels;
+                    ventasChart.data.datasets[0].data = data.data;
+                    ventasChart.update();
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos:', error);
+                alert('Hubo un error al generar el informe.');
+            });
+        });
+    
+        // Función para mostrar el modal
+        function mostrarModal() {
+            const modal = document.getElementById('modal-no-datos');
+            modal.style.display = 'block';
+    
+            // Agregar evento para cerrar el modal
+            document.getElementById('btn-cerrar-modal').addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+        }
+    </script>
+    <script>
+        document.getElementById('form-informe').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+
+            try {
+                const response = await fetch('generar_pdf.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                // Comprobar si el resultado está vacío
+                if (result.labels.length === 0 && result.data.length === 0) {
+                    mostrarModal();
+                } else {
+                    console.log('Datos obtenidos:', result);
+                    // Aquí iría la lógica para mostrar el gráfico (no incluida)
+                }
+            } catch (error) {
+                console.error('Error al procesar el informe:', error);
+            }
+        });
+
+        function mostrarModal() {
+            const modal = document.getElementById('modal-no-datos');
+            modal.style.display = 'block';
+
+            document.getElementById('btn-cerrar-modal').addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+        }
+    </script>
+    <script>
+        document.getElementById('descargarPdf-button').addEventListener('click', function (e) {
+            e.preventDefault();
+    
+            // Recuperar valores del formulario
+            const fechaInicio = document.getElementById('fecha_inicio').value;
+            const fechaFin = document.getElementById('fecha_fin').value;
+            const tipoInforme = document.getElementById('tipo_informe').value;
+    
+            // Validar datos antes de enviar
+            if (!fechaInicio || !fechaFin || !tipoInforme) {
+                alert('Por favor, completa todos los campos antes de generar el informe.');
+                return;
+            }
+    
+            // Enviar datos al servidor para generar el PDF
+            fetch('generar_pdf.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fecha_inicio: fechaInicio,
+                    fecha_fin: fechaFin,
+                    tipo_informe: tipoInforme
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al generar el PDF. Verifica los datos enviados.');
+                }
+                return response.blob(); // Esperar el archivo PDF en formato binario
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob); // Crear URL del archivo
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Informes.pdf'; // Nombre del archivo descargado
+                document.body.appendChild(a); // Agregar enlace temporal al DOM
+                a.click(); // Simula clic para iniciar la descarga
+                document.body.removeChild(a); // Elimina el enlace después de la descarga
+                window.URL.revokeObjectURL(url); // Liberar memoria
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocurrió un error al intentar descargar el informe.');
+            });
+        });
+    </script>
+
+</body>
+<footer>
+    <p class="copyright">&copy; 2024 RestoTech</p>
+    </footer>
+
+</html>
